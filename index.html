@@ -32,20 +32,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .cloud-layer{position:absolute;width:100%;pointer-events:none;z-index:1}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden;padding:0;background:var(--azul-oscuro)}
-.hero-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,28,48,0.15) 0%,rgba(15,28,48,0.35) 40%,rgba(15,28,48,0.85) 75%,var(--azul-oscuro) 100%)}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 3.5rem 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 65% 40%,rgba(48,74,110,0.7) 0%,transparent 55%),radial-gradient(ellipse at 5% 85%,rgba(102,141,192,0.18) 0%,transparent 45%);z-index:0}
+.stars-layer{position:absolute;inset:0;z-index:0}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{0%{opacity:.15}100%{opacity:.85}}
 
-.hero-content{position:relative;z-index:3;max-width:720px;text-align:center;padding:3rem 2rem 5rem;margin:0 auto}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(102,141,192,0.22);border:1px solid rgba(102,141,192,0.4);color:var(--azul-claro);padding:.5rem 1.4rem;border-radius:50px;font-size:.78rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:1.8rem;font-weight:400;backdrop-filter:blur(8px)}
-.hero h1{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.08;margin-bottom:1.6rem;color:var(--blanco);letter-spacing:-.5px;text-shadow:0 4px 20px rgba(0,0,0,0.3)}
+/* Clouds floating */
+.cloud-float{position:absolute;z-index:1;animation:cloudDrift linear infinite}
+@keyframes cloudDrift{0%{transform:translateX(0)}100%{transform:translateX(60px)}}
+@keyframes cloudDriftR{0%{transform:translateX(0)}100%{transform:translateX(-50px)}}
+
+.hero-content{position:relative;z-index:3;max-width:580px}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(102,141,192,0.18);border:1px solid rgba(102,141,192,0.35);color:var(--azul-claro);padding:.4rem 1.2rem;border-radius:50px;font-size:.78rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:1.6rem;font-weight:400}
+.hero h1{font-size:clamp(2.6rem,4.5vw,4.2rem);font-weight:700;line-height:1.06;margin-bottom:1.4rem;color:var(--blanco);letter-spacing:-.5px}
 .hero h1 em{color:var(--azul-secundario);font-style:normal}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.85);line-height:1.85;margin-bottom:2.8rem;font-weight:300;max-width:560px;margin-left:auto;margin-right:auto;text-shadow:0 2px 10px rgba(0,0,0,0.2)}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.btn-primary{background:var(--azul-secundario);color:var(--blanco);padding:.95rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:500;font-size:.95rem;transition:all .3s;border:none;cursor:pointer;font-family:var(--font);box-shadow:0 6px 24px rgba(102,141,192,0.3)}
-.btn-primary:hover{background:var(--azul-principal);transform:translateY(-2px);box-shadow:0 10px 30px rgba(102,141,192,0.4)}
-.btn-outline{background:rgba(255,255,255,0.08);color:var(--blanco);padding:.95rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:400;font-size:.95rem;border:1px solid rgba(255,255,255,0.35);transition:all .3s;cursor:pointer;font-family:var(--font);backdrop-filter:blur(6px)}
-.btn-outline:hover{border-color:var(--azul-secundario);color:var(--azul-claro);background:rgba(102,141,192,0.15)}
+.hero-sub{font-size:1.05rem;color:var(--neutro);line-height:1.85;margin-bottom:2.5rem;font-weight:300}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--azul-secundario);color:var(--blanco);padding:.88rem 2rem;border-radius:50px;text-decoration:none;font-weight:500;font-size:.92rem;transition:all .3s;border:none;cursor:pointer;font-family:var(--font)}
+.btn-primary:hover{background:var(--azul-principal);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--blanco);padding:.88rem 2rem;border-radius:50px;text-decoration:none;font-weight:400;font-size:.92rem;border:1px solid rgba(255,255,255,0.28);transition:all .3s;cursor:pointer;font-family:var(--font)}
+.btn-outline:hover{border-color:var(--azul-secundario);color:var(--azul-claro)}
+
+/* HERO RIGHT — COLLAGE DE IMÁGENES + PIÑATA */
+.hero-visual{position:absolute;right:3%;top:50%;transform:translateY(-50%);z-index:2;width:440px;height:480px}
+.pinata-wrap{position:relative;width:100%;height:100%}
+.pinata-anim{animation:floatPin 4.5s ease-in-out infinite}
+@keyframes floatPin{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+
+/* Image collage around piñata */
+.img-bubble{position:absolute;border-radius:50%;overflow:hidden;border:3px solid rgba(192,208,239,0.35);box-shadow:0 8px 32px rgba(15,28,48,0.4)}
+.img-bubble img{width:100%;height:100%;object-fit:cover}
+.bubble-1{width:130px;height:130px;top:30px;right:10px;animation:bubbleFloat 5s ease-in-out infinite}
+.bubble-2{width:100px;height:100px;bottom:80px;right:0;animation:bubbleFloat 6s ease-in-out .8s infinite}
+.bubble-3{width:110px;height:110px;bottom:50px;left:10px;animation:bubbleFloat 5.5s ease-in-out .4s infinite}
+.bubble-4{width:90px;height:90px;top:60px;left:20px;animation:bubbleFloat 4.8s ease-in-out 1.2s infinite}
+@keyframes bubbleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.confetti-wrap{position:absolute;inset:0;pointer-events:none;z-index:2}
 
 /* STATS */
 .stats-bar{background:var(--azul-principal);padding:2.8rem 3.5rem;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:1.5rem;position:relative;overflow:hidden}
@@ -60,27 +84,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .section-title{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--blanco);line-height:1.1;margin-bottom:1.2rem;letter-spacing:-.3px}
 .section-title em{color:var(--azul-claro);font-style:normal}
 .section-sub{color:var(--neutro);font-size:.98rem;line-height:1.85;max-width:480px;margin-bottom:2.8rem;font-weight:300}
-.section-header-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem}
-.section-header-grid .section-sub{margin-bottom:0}
 
-.products-container{position:relative;width:100%;padding:1rem 0}
-.products-slider{display:flex;gap:1.8rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:1.5rem .5rem;scroll-behavior:smooth}
-.products-slider::-webkit-scrollbar{display:none}
-.product-card{flex:0 0 400px;scroll-snap-align:start;background:rgba(48,74,110,0.28);border:1px solid rgba(102,141,192,0.18);border-radius:24px;padding:2.2rem;transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.15)}
-.product-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--azul-secundario),var(--azul-claro));transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.product-card{background:rgba(48,74,110,0.28);border:1px solid rgba(102,141,192,0.18);border-radius:22px;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden}
+.product-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--azul-secundario),var(--azul-claro));transform:scaleX(0);transition:transform .3s;transform-origin:left}
 .product-card:hover::after{transform:scaleX(1)}
-.product-card:hover{border-color:rgba(102,141,192,0.4);transform:translateY(-8px) scale(1.02);background:rgba(48,74,110,0.45);box-shadow:0 20px 50px rgba(0,0,0,0.25)}
-.product-img-wrapper{width:100%;height:320px;border-radius:18px;margin-bottom:1.5rem;overflow:hidden;position:relative}
-.product-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.product-card:hover .product-img{transform:scale(1.1)}
-.product-name{font-size:1.15rem;font-weight:600;color:var(--blanco);margin-bottom:.6rem;letter-spacing:-0.2px}
-.product-desc{font-size:.88rem;color:var(--neutro);line-height:1.75;font-weight:300;margin-bottom:1.2rem}
-.product-tag{display:inline-block;background:rgba(102,141,192,0.15);border:1px solid rgba(102,141,192,0.3);color:var(--azul-claro);padding:.35rem 1rem;border-radius:50px;font-size:.75rem;font-weight:500;letter-spacing:0.5px}
-
-.slider-controls{display:flex;gap:1rem;margin-top:2.5rem;justify-content:center}
-.slider-btn{width:54px;height:54px;border-radius:50%;background:rgba(48,74,110,0.4);border:1px solid rgba(102,141,192,0.25);color:var(--blanco);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
-.slider-btn:hover{background:var(--azul-secundario);border-color:var(--azul-claro);transform:scale(1.1)}
-.slider-btn svg{width:20px;height:20px;fill:currentColor}
+.product-card:hover{border-color:rgba(102,141,192,0.4);transform:translateY(-5px);background:rgba(48,74,110,0.45)}
+.product-img{width:100%;height:150px;object-fit:cover;border-radius:14px;margin-bottom:1.2rem}
+.product-name{font-size:1.05rem;font-weight:600;color:var(--blanco);margin-bottom:.5rem}
+.product-desc{font-size:.83rem;color:var(--neutro);line-height:1.72;font-weight:300}
+.product-tag{display:inline-block;background:rgba(192,208,239,0.1);border:1px solid rgba(192,208,239,0.2);color:var(--azul-claro);padding:.28rem .8rem;border-radius:50px;font-size:.72rem;margin-top:.9rem;font-weight:400}
 
 /* ETAPAS */
 .etapas-section{background:rgba(48,74,110,0.14);padding:5.5rem 3.5rem;position:relative;overflow:hidden}
@@ -150,68 +163,6 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
 
 /* CLOUD SVG REUSABLE */
 .cloud-svg{position:absolute;pointer-events:none;z-index:1;opacity:.18}
-
-/* === OPTIMIZACIÓN RESPONSIVA (MOBILE & PC) === */
-
-/* OPTIMIZACIÓN PC - PANTALLAS GRANDES */
-@media (min-width: 1280px) {
-  .section, .etapas-section, .testimonios, .porque, .contacto {
-    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
-    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
-  }
-  nav {
-    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
-    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
-  }
-  footer {
-    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
-    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
-  }
-}
-
-/* TABLETS Y LAPTOPS PEQUEÑAS */
-@media (max-width: 1024px) {
-  nav { padding: 1rem 2.5rem; }
-  .nav-links { gap: 1.5rem; }
-  .nav-links a { font-size: 0.8rem; }
-  
-  .etapas-grid { grid-template-columns: repeat(2, 1fr); }
-  .section, .contacto, .porque, .testimonios, .etapas-section { padding: 4.5rem 2.5rem; }
-}
-
-/* DISPOSITIVOS MÓVILES */
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; /* Menú oculto para mayor limpieza en móvil */ }
-  
-  .hero-content { padding: 7rem 1.5rem 3rem; }
-  .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); margin-bottom: 1.2rem; }
-  .hero-sub { font-size: 1rem; line-height: 1.6; margin-bottom: 2.2rem; }
-  .hero-btns { flex-direction: column; width: 100%; gap: 1rem; }
-  .btn-primary, .btn-outline { width: 100%; text-align: center; }
-  
-  .stats-bar { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; }
-  .stat-divider { width: 60px; height: 1px; }
-  
-  .section, .contacto, .porque, .testimonios, .etapas-section { padding: 4rem 1.5rem; }
-  .section-title { font-size: clamp(1.8rem, 6vw, 2.2rem); margin-bottom: 1rem; }
-  
-  /* Ajuste de grids a 1 columna */
-  .section-header-grid { grid-template-columns: 1fr; gap: 1rem; text-align: left; margin-bottom: 2rem; align-items: start; }
-  .etapas-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
-  .porque-grid { grid-template-columns: 1fr; gap: 3.5rem; margin-top: 1.5rem; }
-  .contacto-inner { grid-template-columns: 1fr; gap: 3.5rem; }
-  .form-row { grid-template-columns: 1fr; gap: 1.1rem; }
-  
-  /* Ajuste visual */
-  .form-card { padding: 1.8rem; }
-  .product-card { flex: 0 0 320px; padding: 1.8rem; }
-  .product-img-wrapper { height: 260px; }
-  .contacto-info h2 { font-size: 2rem; }
-  .contacto-info p { font-size: .95rem; }
-  
-  footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 1.5rem; }
-}
 </style>
 </head>
 <body>
@@ -230,25 +181,23 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <video class="hero-video" autoplay muted loop playsinline poster="toa-heftiba-7HNgJGfZFYg-unsplash.jpg">
-    <source src="hero-video.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg"></div>
+  <div class="stars-layer" id="stars"></div>
 
   <!-- NUBES HERO -->
-  <svg class="cloud-svg" style="top:8%;left:-2%;width:320px;animation:cloudDriftSlow 18s ease-in-out infinite alternate;z-index:2" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <svg class="cloud-svg" style="top:8%;left:-2%;width:320px;animation:cloudDriftSlow 18s ease-in-out infinite alternate" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="100" cy="55" rx="90" ry="30" fill="#C0D0EF"/>
     <ellipse cx="70" cy="40" rx="50" ry="28" fill="#C0D0EF"/>
     <ellipse cx="130" cy="38" rx="45" ry="26" fill="#C0D0EF"/>
     <ellipse cx="100" cy="32" rx="35" ry="22" fill="#C0D0EF"/>
   </svg>
-  <svg class="cloud-svg" style="top:15%;right:2%;width:260px;opacity:.12;animation:cloudDriftSlow 22s ease-in-out 3s infinite alternate-reverse;z-index:2" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <svg class="cloud-svg" style="top:15%;right:2%;width:260px;opacity:.12;animation:cloudDriftSlow 22s ease-in-out 3s infinite alternate-reverse" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="100" cy="55" rx="90" ry="30" fill="#668DC0"/>
     <ellipse cx="65" cy="40" rx="52" ry="28" fill="#668DC0"/>
     <ellipse cx="135" cy="38" rx="48" ry="26" fill="#668DC0"/>
     <ellipse cx="100" cy="30" rx="38" ry="22" fill="#668DC0"/>
   </svg>
-  <svg class="cloud-svg" style="bottom:22%;left:30%;width:200px;opacity:.1;animation:cloudDriftSlow 25s ease-in-out 6s infinite alternate;z-index:2" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <svg class="cloud-svg" style="bottom:12%;left:30%;width:200px;opacity:.1;animation:cloudDriftSlow 25s ease-in-out 6s infinite alternate" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="100" cy="55" rx="90" ry="30" fill="#C0D0EF"/>
     <ellipse cx="70" cy="40" rx="50" ry="28" fill="#C0D0EF"/>
     <ellipse cx="130" cy="38" rx="45" ry="26" fill="#C0D0EF"/>
@@ -261,6 +210,78 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
     <div class="hero-btns">
       <a href="#contacto" class="btn-primary">Solicitar cotización</a>
       <a href="#productos" class="btn-outline">Ver productos</a>
+    </div>
+  </div>
+
+  <!-- HERO VISUAL: PIÑATA + BUBBLES CON IMÁGENES -->
+  <div class="hero-visual">
+    <div class="pinata-wrap">
+      <div class="confetti-wrap" id="confettiBox"></div>
+
+      <!-- Imágenes en burbujas -->
+      <div class="img-bubble bubble-1">
+        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=200&h=200&fit=crop&crop=face" alt="Bebé feliz" onerror="this.parentElement.style.background='#304A6E'">
+      </div>
+      <div class="img-bubble bubble-2">
+        <img src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=200&h=200&fit=crop&crop=center" alt="Pañales" onerror="this.parentElement.style.background='#304A6E'">
+      </div>
+      <div class="img-bubble bubble-3">
+        <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?w=200&h=200&fit=crop&crop=face" alt="Bebé" onerror="this.parentElement.style.background='#304A6E'">
+      </div>
+      <div class="img-bubble bubble-4">
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=200&h=200&fit=crop&crop=face" alt="Cuidado bebé" onerror="this.parentElement.style.background='#304A6E'">
+      </div>
+
+      <!-- PIÑATA SVG -->
+      <div class="pinata-anim" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:220px;height:240px">
+        <svg viewBox="0 0 260 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <defs>
+            <radialGradient id="gB" cx="45%" cy="32%" r="62%">
+              <stop offset="0%" stop-color="#7BAFD4"/>
+              <stop offset="100%" stop-color="#2C5282"/>
+            </radialGradient>
+            <radialGradient id="gP" cx="50%" cy="28%" r="66%">
+              <stop offset="0%" stop-color="#668DC0"/>
+              <stop offset="100%" stop-color="#304A6E"/>
+            </radialGradient>
+          </defs>
+          <!-- Cuerda -->
+          <path d="M130 14 Q138 26 130 42 Q122 58 130 70" stroke="#C0D0EF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="130" cy="12" r="5" fill="#C0D0EF"/>
+          <!-- Puntas estrella -->
+          <ellipse cx="42" cy="118" rx="40" ry="22" fill="url(#gB)" transform="rotate(-30 42 118)"/>
+          <ellipse cx="42" cy="118" rx="40" ry="22" fill="none" stroke="#94B8E0" stroke-width="5" stroke-dasharray="12 6" opacity="0.4" transform="rotate(-30 42 118)"/>
+          <ellipse cx="218" cy="118" rx="40" ry="22" fill="url(#gB)" transform="rotate(30 218 118)"/>
+          <ellipse cx="218" cy="118" rx="40" ry="22" fill="none" stroke="#94B8E0" stroke-width="5" stroke-dasharray="12 6" opacity="0.4" transform="rotate(30 218 118)"/>
+          <ellipse cx="70" cy="62" rx="38" ry="20" fill="url(#gB)" transform="rotate(-58 70 62)"/>
+          <ellipse cx="188" cy="62" rx="38" ry="20" fill="url(#gB)" transform="rotate(58 188 62)"/>
+          <ellipse cx="130" cy="235" rx="42" ry="20" fill="url(#gB)"/>
+          <!-- Cuerpo -->
+          <ellipse cx="130" cy="150" rx="88" ry="80" fill="url(#gP)"/>
+          <ellipse cx="130" cy="150" rx="88" ry="80" fill="none" stroke="rgba(192,208,239,0.3)" stroke-width="14" stroke-dasharray="30 14"/>
+          <!-- Centro suave -->
+          <ellipse cx="130" cy="150" rx="52" ry="48" fill="rgba(192,208,239,0.08)"/>
+          <!-- Cara -->
+          <circle cx="114" cy="143" r="7" fill="#0F1C30"/>
+          <circle cx="146" cy="143" r="7" fill="#0F1C30"/>
+          <circle cx="116" cy="141" r="2.5" fill="white"/>
+          <circle cx="148" cy="141" r="2.5" fill="white"/>
+          <path d="M108 163 Q130 178 152 163" stroke="#0F1C30" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="100" cy="157" rx="10" ry="7" fill="rgba(210,120,140,0.38)"/>
+          <ellipse cx="160" cy="157" rx="10" ry="7" fill="rgba(210,120,140,0.38)"/>
+          <!-- Pompones -->
+          <circle cx="58" cy="200" r="11" fill="#4A7CC7" opacity="0.72"/>
+          <circle cx="50" cy="183" r="7" fill="#6A9DD7" opacity="0.6"/>
+          <circle cx="202" cy="198" r="11" fill="#4A7CC7" opacity="0.72"/>
+          <circle cx="210" cy="181" r="7" fill="#6A9DD7" opacity="0.6"/>
+          <circle cx="130" cy="256" r="13" fill="#304A6E" opacity="0.85"/>
+          <circle cx="108" cy="251" r="7" fill="#5580B0" opacity="0.65"/>
+          <circle cx="152" cy="251" r="7" fill="#5580B0" opacity="0.65"/>
+          <!-- Detalles estrellitas -->
+          <text x="96" y="118" font-size="13" fill="#C0D0EF" opacity="0.75">★</text>
+          <text x="152" y="128" font-size="9" fill="#94B8E0" opacity="0.7">✦</text>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -292,68 +313,46 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
     <ellipse cx="100" cy="30" rx="36" ry="22" fill="#668DC0"/>
   </svg>
   <div class="section-label">Nuestro catálogo</div>
-  <div class="section-header-grid">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem">
     <h2 class="section-title">Productos para <em>todas las etapas</em></h2>
     <p class="section-sub">Distribución mayorista de artículos de higiene. Ideal para hospitales, farmacias, hogares de ancianos y distribuidores en todo México.</p>
   </div>
-  <div class="products-container">
-    <div class="products-slider" id="productSlider">
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="kat-van-der-linden-QCVrp1uxCXs-unsplash.jpg" alt="Pañales bebé">
-        </div>
-        <div class="product-name">Pañales para bebé</div>
-        <p class="product-desc">Suaves, absorbentes y seguros para la piel delicada de los más pequeños. Disponibles en todas las tallas a granel.</p>
-        <span class="product-tag">Tallas RN — G</span>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="luwadlin-bosman-Oa3zNJJgfaw-unsplash.jpg" alt="Pañales adulto">
-        </div>
-        <div class="product-name">Pañales para adulto</div>
-        <p class="product-desc">Máxima absorción y comodidad para adultos con incontinencia. Diseñados para uso diurno y nocturno.</p>
-        <span class="product-tag">Tallas S — XL</span>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Adulto mayor">
-        </div>
-        <div class="product-name">Pañales adulto mayor</div>
-        <p class="product-desc">Especialmente formulados para pieles sensibles y mayor tiempo de uso. Ideal para hogares geriátricos.</p>
-        <span class="product-tag">Alta absorción</span>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="madalyn-cox-WSKyDSae5fA-unsplash.jpg" alt="Toallas incontinencia">
-        </div>
-        <div class="product-name">Toallas de incontinencia</div>
-        <p class="product-desc">Protección discreta y eficaz para uso adulto. Comodidad sin comprometer la movilidad del usuario.</p>
-        <span class="product-tag">Bebé y adulto</span>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="kseniya-safronova-vVb62FI7jaE-unsplash.jpg" alt="Toallitas húmedas">
-        </div>
-        <div class="product-name">Toallitas húmedas</div>
-        <p class="product-desc">Fórmula suave sin alcohol. Para bebés y adultos. Higiene completa en cualquier momento.</p>
-        <span class="product-tag">Sin fragancia</span>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrapper">
-          <img class="product-img" src="mediamodifier-PKdcZz-o6bw-unsplash.jpg" alt="Sábanas predobladas">
-        </div>
-        <div class="product-name">Sábanas predobladas</div>
-        <p class="product-desc">Impermeables y de rápido cambio para camas clínicas o de cuidado domiciliario. Fáciles de usar.</p>
-        <span class="product-tag">Uso hospitalario</span>
-      </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1612957824377-a13d3ff31f86?w=400&h=200&fit=crop&crop=center" alt="Pañales bebé" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Pañales para bebé</div>
+      <p class="product-desc">Suaves, absorbentes y seguros para la piel delicada de los más pequeños. Disponibles en todas las tallas a granel.</p>
+      <span class="product-tag">Tallas RN — G</span>
     </div>
-    <div class="slider-controls">
-      <button class="slider-btn" onclick="moveSlider(-1)" aria-label="Anterior">
-        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-      </button>
-      <button class="slider-btn" onclick="moveSlider(1)" aria-label="Siguiente">
-        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-      </button>
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=200&fit=crop&crop=center" alt="Pañales adulto" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Pañales para adulto</div>
+      <p class="product-desc">Máxima absorción y comodidad para adultos con incontinencia. Diseñados para uso diurno y nocturno.</p>
+      <span class="product-tag">Tallas S — XL</span>
+    </div>
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&h=200&fit=crop&crop=center" alt="Adulto mayor" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Pañales adulto mayor</div>
+      <p class="product-desc">Especialmente formulados para pieles sensibles y mayor tiempo de uso. Ideal para hogares geriátricos.</p>
+      <span class="product-tag">Alta absorción</span>
+    </div>
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=200&fit=crop&crop=center" alt="Toallas incontinencia" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Toallas de incontinencia</div>
+      <p class="product-desc">Protección discreta y eficaz para uso adulto. Comodidad sin comprometer la movilidad del usuario.</p>
+      <span class="product-tag">Bebé y adulto</span>
+    </div>
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=200&fit=crop&crop=center" alt="Toallitas húmedas" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Toallitas húmedas</div>
+      <p class="product-desc">Fórmula suave sin alcohol. Para bebés y adultos. Higiene completa en cualquier momento.</p>
+      <span class="product-tag">Sin fragancia disponible</span>
+    </div>
+    <div class="product-card">
+      <img class="product-img" src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=400&h=200&fit=crop&crop=center" alt="Sábanas predobladas" onerror="this.style.background='#304A6E';this.style.height='120px'">
+      <div class="product-name">Sábanas predobladas</div>
+      <p class="product-desc">Impermeables y de rápido cambio para camas clínicas o de cuidado domiciliario. Fáciles de usar.</p>
+      <span class="product-tag">Uso hospitalario y hogar</span>
     </div>
   </div>
 </section>
@@ -370,32 +369,32 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
   <h2 class="section-title" style="text-align:center">Una solución para <em>cada etapa</em></h2>
   <div class="etapas-grid">
     <div class="etapa-card">
-      <img class="etapa-img" src="toa-heftiba-7HNgJGfZFYg-unsplash.jpg" alt="Bebé">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=150&h=150&fit=crop&crop=face" alt="Bebé" onerror="this.style.display='none'">
       <div class="etapa-title">Primera infancia</div>
       <p class="etapa-desc">Bebés recién nacidos y en crecimiento que necesitan protección suave y confiable día y noche.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="luwadlin-bosman-Oa3zNJJgfaw-unsplash.jpg" alt="Adulto activo">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop&crop=face" alt="Adulto activo" onerror="this.style.display='none'">
       <div class="etapa-title">Adulto activo</div>
       <p class="etapa-desc">Personas que requieren productos discretos y efectivos sin interrumpir su ritmo de vida diario.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Adulto mayor">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1559722727-6f34dfac4a72?w=150&h=150&fit=crop&crop=face" alt="Adulto mayor" onerror="this.style.display='none'">
       <div class="etapa-title">Adulto mayor</div>
       <p class="etapa-desc">Cuidado especializado para pieles sensibles con máximo confort y dignidad en cada momento.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="mediamodifier-VoXqvbLAPjM-unsplash.jpg" alt="Hospital">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=150&h=150&fit=crop&crop=center" alt="Hospital" onerror="this.style.display='none'">
       <div class="etapa-title">Hospitales y clínicas</div>
       <p class="etapa-desc">Abastecimiento continuo y en volumen para centros de salud que necesitan confiabilidad total.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="toa-heftiba-7HNgJGfZFYg-unsplash.jpg" alt="Farmacia">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=150&h=150&fit=crop&crop=center" alt="Farmacia" onerror="this.style.display='none'">
       <div class="etapa-title">Farmacias y distribuidores</div>
       <p class="etapa-desc">Precios de mayoreo y entregas ágiles para negocios que revenden productos de higiene personal.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Hogar geriátrico">
+      <img class="etapa-img" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=150&h=150&fit=crop&crop=center" alt="Hogar geriátrico" onerror="this.style.display='none'">
       <div class="etapa-title">Hogares geriátricos</div>
       <p class="etapa-desc">Paquetes especiales para residencias de adultos mayores con atención individualizada.</p>
     </div>
@@ -419,7 +418,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">Llevamos más de un año comprando con ETAPAS para nuestro hogar geriátrico. La calidad es excelente y los precios de mayoreo nos ayudan a mantener costos bajos sin sacrificar dignidad.</p>
       <div class="testi-author">
-        <div class="testi-avatar-init">MR</div>
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&h=80&fit=crop&crop=face" alt="Martha" onerror="this.style.display='none'">
         <div><div class="testi-name">Martha Rodríguez</div><div class="testi-role">Directora, Hogar San José — CDMX</div></div>
       </div>
     </div>
@@ -428,7 +427,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">Los pañales para bebé son de primera. Mis clientes siempre los piden de vuelta. El servicio de ETAPAS es rápido y el surtido llegó completo y en tiempo. Muy recomendable.</p>
       <div class="testi-author">
-        <div class="testi-avatar-init">CA</div>
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Carlos" onerror="this.style.display='none'">
         <div><div class="testi-name">Carlos Anaya</div><div class="testi-role">Propietario, Farmacia El Carmen — Ecatepec</div></div>
       </div>
     </div>
@@ -437,7 +436,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">Las toallitas y sábanas predobladas son indispensables en nuestra clínica. ETAPAS nos ofrece precio justo y cobertura para operar sin interrupciones.</p>
       <div class="testi-author">
-        <div class="testi-avatar-init">LP</div>
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face" alt="Laura" onerror="this.style.display='none'">
         <div><div class="testi-name">Lic. Laura Pérez</div><div class="testi-role">Administradora, Clínica Integral — Naucalpan</div></div>
       </div>
     </div>
@@ -446,7 +445,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">Mi mamá necesitaba pañales para adulto mayor y no encontraba a buen precio. Con ETAPAS compramos por caja y el ahorro es real. El producto no irrita y es de excelente calidad.</p>
       <div class="testi-author">
-        <div class="testi-avatar-init">GV</div>
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Gabriela" onerror="this.style.display='none'">
         <div><div class="testi-name">Gabriela Vargas</div><div class="testi-role">Cuidadora familiar — Estado de México</div></div>
       </div>
     </div>
@@ -455,8 +454,17 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">Como distribuidor, necesito proveedores confiables. ETAPAS cumple en tiempo, precio y calidad. El seguimiento por WhatsApp es ágil. Ya no busco a nadie más.</p>
       <div class="testi-author">
-        <div class="testi-avatar-init">JT</div>
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="Jorge" onerror="this.style.display='none'">
         <div><div class="testi-name">Jorge Torres</div><div class="testi-role">Distribuidor mayorista — Toluca</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Pedimos toallas de incontinencia y pañales para nuestra guardería y asilo. Todo llegó bien empacado y en excelente estado. Sin duda seguiremos con ETAPAS.</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=80&h=80&fit=crop&crop=face" alt="Sandra" onerror="this.style.display='none'">
+        <div><div class="testi-name">Sra. Sandra López</div><div class="testi-role">Coordinadora, Centro Comunitario — Tlalnepantla</div></div>
       </div>
     </div>
   </div>
@@ -531,8 +539,9 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       </a>
       <div class="contacto-detail">📍 Atendemos todo México — ventas a granel</div>
       <div class="contacto-detail">⏰ Lun–Vie 9am–6pm · Sáb 10am–2pm</div>
+      <!-- imagen bebé decorativa -->
       <div style="margin-top:2rem;border-radius:20px;overflow:hidden;max-width:280px;border:2px solid rgba(102,141,192,0.25)">
-        <img src="zelle-duda-uld7AdE36z4-unsplash.jpg" alt="Cuidado familiar ETAPAS" style="width:100%;display:block;object-fit:cover;height:180px">
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&h=220&fit=crop&crop=center" alt="Cuidado familiar ETAPAS" style="width:100%;display:block;object-fit:cover;height:180px" onerror="this.parentElement.style.display='none'">
       </div>
     </div>
     <div class="form-card">
@@ -587,14 +596,24 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
 @keyframes cloudDriftSlow{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
 </style>
 <script>
-function moveSlider(direction) {
-  const slider = document.getElementById('productSlider');
-  const scrollAmount = 340; // card width + gap
-  slider.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
+const sc=document.getElementById('stars');
+for(let i=0;i<90;i++){
+  const s=document.createElement('div');
+  const sz=Math.random()*2.2+.4;
+  s.style.cssText=`position:absolute;width:${sz}px;height:${sz}px;background:white;border-radius:50%;top:${Math.random()*100}%;left:${Math.random()*100}%;animation:twinkle ${2+Math.random()*3}s ${Math.random()*4}s infinite alternate;opacity:${Math.random()*.65+.1}`;
+  sc.appendChild(s);
 }
+const cb=document.getElementById('confettiBox');
+const cols=['#668DC0','#C0D0EF','#304A6E','#7BAFD4','#94B8E0','#F0C040','#E07080','#A8D8EA'];
+for(let i=0;i<22;i++){
+  const c=document.createElement('div');
+  const w=Math.random()*7+3;const h=Math.random()*11+5;
+  c.style.cssText=`position:absolute;width:${w}px;height:${h}px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:2px;top:${Math.random()*55+20}%;left:${Math.random()*78+10}%;animation:fall ${2+Math.random()*2}s ${Math.random()*3}s linear infinite;opacity:.82`;
+  cb.appendChild(c);
+}
+const style=document.createElement('style');
+style.textContent=`@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(220px) rotate(400deg);opacity:0}}`;
+document.head.appendChild(style);
 function sendWA(){
   const n=document.querySelector('input[placeholder="Tu nombre"]').value||'Sin nombre';
   const t=document.querySelector('input[type="tel"]').value||'Sin tel';
