@@ -60,6 +60,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .section-title{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--blanco);line-height:1.1;margin-bottom:1.2rem;letter-spacing:-.3px}
 .section-title em{color:var(--azul-claro);font-style:normal}
 .section-sub{color:var(--neutro);font-size:.98rem;line-height:1.85;max-width:480px;margin-bottom:2.8rem;font-weight:300}
+.section-header-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem}
+.section-header-grid .section-sub{margin-bottom:0}
 
 .products-container{position:relative;width:100%;padding:1rem 0}
 .products-slider{display:flex;gap:1.8rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:1.5rem .5rem;scroll-behavior:smooth}
@@ -148,6 +150,68 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
 
 /* CLOUD SVG REUSABLE */
 .cloud-svg{position:absolute;pointer-events:none;z-index:1;opacity:.18}
+
+/* === OPTIMIZACIÓN RESPONSIVA (MOBILE & PC) === */
+
+/* OPTIMIZACIÓN PC - PANTALLAS GRANDES */
+@media (min-width: 1280px) {
+  .section, .etapas-section, .testimonios, .porque, .contacto {
+    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
+    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
+  }
+  nav {
+    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
+    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
+  }
+  footer {
+    padding-left: max(3.5rem, calc((100vw - 1150px) / 2));
+    padding-right: max(3.5rem, calc((100vw - 1150px) / 2));
+  }
+}
+
+/* TABLETS Y LAPTOPS PEQUEÑAS */
+@media (max-width: 1024px) {
+  nav { padding: 1rem 2.5rem; }
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.8rem; }
+  
+  .etapas-grid { grid-template-columns: repeat(2, 1fr); }
+  .section, .contacto, .porque, .testimonios, .etapas-section { padding: 4.5rem 2.5rem; }
+}
+
+/* DISPOSITIVOS MÓVILES */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; /* Menú oculto para mayor limpieza en móvil */ }
+  
+  .hero-content { padding: 7rem 1.5rem 3rem; }
+  .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); margin-bottom: 1.2rem; }
+  .hero-sub { font-size: 1rem; line-height: 1.6; margin-bottom: 2.2rem; }
+  .hero-btns { flex-direction: column; width: 100%; gap: 1rem; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; }
+  
+  .stats-bar { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; }
+  .stat-divider { width: 60px; height: 1px; }
+  
+  .section, .contacto, .porque, .testimonios, .etapas-section { padding: 4rem 1.5rem; }
+  .section-title { font-size: clamp(1.8rem, 6vw, 2.2rem); margin-bottom: 1rem; }
+  
+  /* Ajuste de grids a 1 columna */
+  .section-header-grid { grid-template-columns: 1fr; gap: 1rem; text-align: left; margin-bottom: 2rem; align-items: start; }
+  .etapas-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .porque-grid { grid-template-columns: 1fr; gap: 3.5rem; margin-top: 1.5rem; }
+  .contacto-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .form-row { grid-template-columns: 1fr; gap: 1.1rem; }
+  
+  /* Ajuste visual */
+  .form-card { padding: 1.8rem; }
+  .product-card { flex: 0 0 280px; padding: 1.5rem; }
+  .product-img-wrapper { height: 160px; }
+  .contacto-info h2 { font-size: 2rem; }
+  .contacto-info p { font-size: .95rem; }
+  
+  footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -228,7 +292,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
     <ellipse cx="100" cy="30" rx="36" ry="22" fill="#668DC0"/>
   </svg>
   <div class="section-label">Nuestro catálogo</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem">
+  <div class="section-header-grid">
     <h2 class="section-title">Productos para <em>todas las etapas</em></h2>
     <p class="section-sub">Distribución mayorista de artículos de higiene. Ideal para hospitales, farmacias, hogares de ancianos y distribuidores en todo México.</p>
   </div>
