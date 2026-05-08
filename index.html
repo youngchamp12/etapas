@@ -388,12 +388,12 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <p class="etapa-desc">Abastecimiento continuo y en volumen para centros de salud que necesitan confiabilidad total.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="toa-heftiba-7HNgJGfZFYg-unsplash.jpg" alt="Farmacia">
+      <img class="etapa-img" src="national-cancer-institute-byGTytEGjBo-unsplash.jpg" alt="Farmacia">
       <div class="etapa-title">Farmacias y distribuidores</div>
       <p class="etapa-desc">Precios de mayoreo y entregas ágiles para negocios que revenden productos de higiene personal.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Hogar geriátrico">
+      <img class="etapa-img" src="dominik-lange-VUOiQW4OeLI-unsplash.jpg" alt="Hogar geriátrico">
       <div class="etapa-title">Hogares geriátricos</div>
       <p class="etapa-desc">Paquetes especiales para residencias de adultos mayores con atención individualizada.</p>
     </div>
@@ -582,7 +582,9 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
 </footer>
 
 <style>
-@keyframes cloudDriftSlow{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
+@keyframes cloudDriftSlow{0%{transform:translate(var(--px,0),var(--py,0)) translateX(0)}100%{transform:translate(var(--px,0),var(--py,0)) translateX(40px)}}
+.duck-svg{transform:translate(var(--px,0),var(--py,0));transition:transform 0.1s ease-out;animation:duckFloat 4s ease-in-out infinite alternate}
+@keyframes duckFloat{0%{margin-top:0}100%{margin-top:-10px}}
 </style>
 <script>
 function moveSlider(direction) {
@@ -601,6 +603,42 @@ function sendWA(){
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
 });
+
+// Patitos dinámicos
+document.querySelectorAll('section').forEach((sec, i) => {
+  const numDucks = Math.floor(Math.random() * 2) + 1;
+  for(let j=0; j<numDucks; j++) {
+    const duck = document.createElement('div');
+    duck.className = 'duck-svg';
+    duck.textContent = '🦆';
+    duck.style.position = 'absolute';
+    duck.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
+    duck.style.top = (Math.random() * 80 + 10) + '%';
+    duck.style.left = (Math.random() * 80 + 10) + '%';
+    duck.style.zIndex = '1';
+    duck.style.opacity = '0.5';
+    duck.style.pointerEvents = 'none';
+    duck.style.userSelect = 'none';
+    duck.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))';
+    if(Math.random() > 0.5) duck.style.transform = 'scaleX(-1)';
+    sec.appendChild(duck);
+  }
+});
+
+// Parallax en PC
+if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  const elements = document.querySelectorAll('.cloud-svg, .duck-svg');
+  elements.forEach((el, index) => { el.dataset.factor = index % 2 === 0 ? 1.5 : -1.2; });
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 40;
+    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+    elements.forEach(el => {
+      const f = parseFloat(el.dataset.factor);
+      el.style.setProperty('--px', (x * f) + 'px');
+      el.style.setProperty('--py', (y * f) + 'px');
+    });
+  });
+}
 </script>
 </body>
 </html>
