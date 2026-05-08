@@ -66,11 +66,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .products-container{position:relative;width:100%;padding:1rem 0}
 .products-slider{display:flex;gap:1.8rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:1.5rem .5rem;scroll-behavior:smooth}
 .products-slider::-webkit-scrollbar{display:none}
-.product-card{flex:0 0 320px;scroll-snap-align:start;background:rgba(48,74,110,0.28);border:1px solid rgba(102,141,192,0.18);border-radius:24px;padding:2rem;transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.15)}
+.product-card{flex:0 0 400px;scroll-snap-align:start;background:rgba(48,74,110,0.28);border:1px solid rgba(102,141,192,0.18);border-radius:24px;padding:2.2rem;transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.15)}
 .product-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--azul-secundario),var(--azul-claro));transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
 .product-card:hover::after{transform:scaleX(1)}
 .product-card:hover{border-color:rgba(102,141,192,0.4);transform:translateY(-8px) scale(1.02);background:rgba(48,74,110,0.45);box-shadow:0 20px 50px rgba(0,0,0,0.25)}
-.product-img-wrapper{width:100%;height:180px;border-radius:18px;margin-bottom:1.5rem;overflow:hidden;position:relative}
+.product-img-wrapper{width:100%;height:320px;border-radius:18px;margin-bottom:1.5rem;overflow:hidden;position:relative}
 .product-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .product-card:hover .product-img{transform:scale(1.1)}
 .product-name{font-size:1.15rem;font-weight:600;color:var(--blanco);margin-bottom:.6rem;letter-spacing:-0.2px}
@@ -205,8 +205,8 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
   
   /* Ajuste visual */
   .form-card { padding: 1.8rem; }
-  .product-card { flex: 0 0 280px; padding: 1.5rem; }
-  .product-img-wrapper { height: 160px; }
+  .product-card { flex: 0 0 320px; padding: 1.8rem; }
+  .product-img-wrapper { height: 260px; }
   .contacto-info h2 { font-size: 2rem; }
   .contacto-info p { font-size: .95rem; }
   
@@ -308,7 +308,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       </div>
       <div class="product-card">
         <div class="product-img-wrapper">
-          <img class="product-img" src="laura-ohlman-xFlVj0HFNCs-unsplash.jpg" alt="Pañales adulto">
+          <img class="product-img" src="luwadlin-bosman-Oa3zNJJgfaw-unsplash.jpg" alt="Pañales adulto">
         </div>
         <div class="product-name">Pañales para adulto</div>
         <p class="product-desc">Máxima absorción y comodidad para adultos con incontinencia. Diseñados para uso diurno y nocturno.</p>
@@ -316,7 +316,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       </div>
       <div class="product-card">
         <div class="product-img-wrapper">
-          <img class="product-img" src="oleksii-bocharov-48aJ0_xIw1c-unsplash.jpg" alt="Adulto mayor">
+          <img class="product-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Adulto mayor">
         </div>
         <div class="product-name">Pañales adulto mayor</div>
         <p class="product-desc">Especialmente formulados para pieles sensibles y mayor tiempo de uso. Ideal para hogares geriátricos.</p>
@@ -375,12 +375,12 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <p class="etapa-desc">Bebés recién nacidos y en crecimiento que necesitan protección suave y confiable día y noche.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="laura-ohlman-xFlVj0HFNCs-unsplash.jpg" alt="Adulto activo">
+      <img class="etapa-img" src="luwadlin-bosman-Oa3zNJJgfaw-unsplash.jpg" alt="Adulto activo">
       <div class="etapa-title">Adulto activo</div>
       <p class="etapa-desc">Personas que requieren productos discretos y efectivos sin interrumpir su ritmo de vida diario.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="oleksii-bocharov-48aJ0_xIw1c-unsplash.jpg" alt="Adulto mayor">
+      <img class="etapa-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Adulto mayor">
       <div class="etapa-title">Adulto mayor</div>
       <p class="etapa-desc">Cuidado especializado para pieles sensibles con máximo confort y dignidad en cada momento.</p>
     </div>
@@ -395,7 +395,7 @@ footer{background:rgba(15,28,48,0.96);border-top:1px solid rgba(102,141,192,0.14
       <p class="etapa-desc">Precios de mayoreo y entregas ágiles para negocios que revenden productos de higiene personal.</p>
     </div>
     <div class="etapa-card">
-      <img class="etapa-img" src="oleksii-bocharov-48aJ0_xIw1c-unsplash.jpg" alt="Hogar geriátrico">
+      <img class="etapa-img" src="hector-reyes-deRqTSOWY0Y-unsplash.jpg" alt="Hogar geriátrico">
       <div class="etapa-title">Hogares geriátricos</div>
       <p class="etapa-desc">Paquetes especiales para residencias de adultos mayores con atención individualizada.</p>
     </div>
